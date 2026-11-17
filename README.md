@@ -161,6 +161,29 @@ Deploy with Docker and provide the required configuration values. The container 
 </details>
 
 <details>
+   <summary>Google Colab (quick test / no server)</summary>
+
+   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gintokisakata918-prog/WZML-X/blob/wzv3/colab.ipynb)
+
+   [`colab.ipynb`](colab.ipynb) runs the bot on a free Colab runtime in one pass:
+   it clones the repo, installs `ffmpeg` / `aria2` / `qbittorrent-nox` / `rclone`
+   and the Python requirements, builds `config.py` from a form, and starts
+   `start.sh` in the background.
+
+   1. Open the badge above (or the notebook from this repo) in Colab.
+   2. `Runtime → Change runtime type → CPU`.
+   3. Run the cells top to bottom; fill `BOT_TOKEN`, `OWNER_ID`,
+      `TELEGRAM_API`, `TELEGRAM_HASH` (and ideally `DATABASE_URL`) in cell 4.
+
+   Good for trying the bot out and for light use. Colab wipes the VM after
+   ~12 hours and on disconnect, has no public tunnel for the web UI, and its
+   disk does not persist — for always-on mirroring use Docker on a VPS.
+
+   Leave `UPSTREAM_REPO` empty in Colab: `update.py` would delete `.git` and
+   hard-reset the checkout, taking `colab.ipynb` with it.
+</details>
+
+<details>
    <summary>Deployment Notes</summary>
 
    1. If you use qBittorrent, tune `AsyncIOThreadsCount` to your machine size.
